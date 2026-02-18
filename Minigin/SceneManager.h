@@ -8,16 +8,19 @@
 namespace dae
 {
 	class Scene;
+	class GameObject;
 	class SceneManager final : public Singleton<SceneManager>
 	{
 	public:
 		Scene& CreateScene();
 
-		void Update();
+		SceneManager();
+		void Update(float deltaTime);
+		void FixedUpdate(float deltaTime);
 		void Render();
 	private:
 		friend class Singleton<SceneManager>;
-		SceneManager() = default;
 		std::vector<std::unique_ptr<Scene>> m_scenes{};
+		std::unique_ptr<GameObject> m_pPlayer{ nullptr };
 	};
 }
