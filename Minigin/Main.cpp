@@ -19,6 +19,8 @@ static void load()
 	auto& scene = dae::SceneManager::GetInstance().CreateScene();
 
 	auto go = std::make_unique<dae::GameObject>();
+	go->AddComponent<dae::BaseComponent>(go.get());
+	go->AddComponent<dae::BaseComponent>(go.get());
 	go->SetTexture("background.png");
 	scene.Add(std::move(go));
 

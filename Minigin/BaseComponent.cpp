@@ -5,10 +5,6 @@ dae::BaseComponent::BaseComponent(GameObject* owner)
 {
 }
 
-void dae::BaseComponent::Start()
-{
-}
-
 void dae::BaseComponent::Update(float deltaTime)
 {
 	float _temp = 0;

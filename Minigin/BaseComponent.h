@@ -10,7 +10,6 @@ namespace dae
 
         //virtual const char* Name() const = 0;
 
-        virtual void Start();
         virtual void Update(float deltaTime);
 
         GameObject* GetOwner() const;
