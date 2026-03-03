@@ -1,14 +1,8 @@
 #include "BaseComponent.h"
 
-dae::BaseComponent::BaseComponent(GameObject* owner)
-: m_pOwner(owner)
+dae::BaseComponent::BaseComponent(GameObject* pOwner)
+	: m_pOwner(pOwner)
 {
-}
-
-void dae::BaseComponent::Update(float deltaTime)
-{
-	float _temp = 0;
-	_temp += deltaTime;
 }
 
 dae::GameObject* dae::BaseComponent::GetOwner() const

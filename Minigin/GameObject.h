@@ -1,18 +1,14 @@
 #pragma once
 #include <string>
 #include <memory>
-#include <typeindex>
 #include <vector>
-#include <unordered_map>
-#include <typeindex>
-#include <type_traits>
 #include "Transform.h"
 #include "BaseComponent.h"
 namespace dae
 {
 	class Texture2D;
 	class BaseComponent;
-	class GameObject 
+	class GameObject final
 	{
 		Transform m_Transform{};
 		std::shared_ptr<Texture2D> m_Texture{};
@@ -20,21 +16,24 @@ namespace dae
 
 	public:
 		template<typename T>
-		T* AddComponent(GameObject* owner)
+		T* AddComponent(GameObject* pOwner)
 		{
-			auto ptr = std::make_unique<T>(owner);
-			m_Components.push_back(std::move(ptr));
-			return ptr.get();
+			auto comp = std::make_unique<T>(pOwner);
+			auto ptr = comp.get();
+			m_Components.push_back(std::move(comp));
+			return ptr;
 		}
 
-		virtual void Update(float deltaTime);
-		virtual void Render() const;
+		void Update(float deltaTime);
+		void Render() const;
 
 		void SetTexture(const std::string& filename);
 		void SetPosition(float x, float y);
 
+		Transform GetTransform() const { return m_Transform; }
+
 		GameObject() = default;
-		virtual ~GameObject();
+		~GameObject();
 		GameObject(const GameObject& other) = delete;
 		GameObject(GameObject&& other) = delete;
 		GameObject& operator=(const GameObject& other) = delete;

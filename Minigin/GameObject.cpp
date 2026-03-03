@@ -3,19 +3,24 @@
 #include "ResourceManager.h"
 #include "Renderer.h"
 #include "BaseComponent.h"
+#include "TestTextComponent.h"
 
 dae::GameObject::~GameObject() = default;
 
 void dae::GameObject::Update(float deltaTime){
+	float totalDeltaTime = deltaTime;
+	totalDeltaTime += deltaTime;
 	for (auto& c : m_Components)
-		c->Update(deltaTime);
+		c->Update();
 
 }
 
 void dae::GameObject::Render() const
 {
-	const auto& pos = m_Transform.GetPosition();
-	Renderer::GetInstance().RenderTexture(*m_Texture, pos.x, pos.y);
+	for (const auto& pComp : m_Components)
+	{
+		pComp->Render();
+	}
 }
 
 void dae::GameObject::SetTexture(const std::string& filename)
