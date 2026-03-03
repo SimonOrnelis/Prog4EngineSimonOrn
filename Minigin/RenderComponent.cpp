@@ -1,4 +1,4 @@
-#include "TestRenderComponent.h"
+#include "RenderComponent.h"
 #include "ResourceManager.h"
 #include "Renderer.h"
 #include "GameObject.h"

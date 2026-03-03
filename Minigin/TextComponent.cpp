@@ -1,4 +1,4 @@
-#include "TestTextComponent.h"
+#include "TextComponent.h"
 #include "Font.h"
 #include "Texture2D.h"
 #include <stdexcept>
