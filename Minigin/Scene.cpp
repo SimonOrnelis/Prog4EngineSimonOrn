@@ -42,3 +42,13 @@ void Scene::Render() const
 	}
 }
 
+void dae::Scene::DeleteMarkedObjects()
+{
+	for (const auto& object : m_objects)
+	{
+		if (object->IsMarkedForDelete())
+		{
+			Remove(*object);
+		}
+	}
+}

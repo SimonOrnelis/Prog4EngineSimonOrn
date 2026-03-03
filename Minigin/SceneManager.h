@@ -18,6 +18,8 @@ namespace dae
 		void Update(float deltaTime);
 		void FixedUpdate(float deltaTime);
 		void Render();
+		void DeleteMarkedObjects();
+
 	private:
 		friend class Singleton<SceneManager>;
 		std::vector<std::unique_ptr<Scene>> m_scenes{};

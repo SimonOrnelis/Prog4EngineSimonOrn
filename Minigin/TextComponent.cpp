@@ -10,7 +10,7 @@ dae::TextComponent::TextComponent(GameObject* owner)
 {
 }
 
-void dae::TextComponent::Update()
+void dae::TextComponent::Update(float)
 {
 	if (m_NeedsUpdate)
 	{

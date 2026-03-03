@@ -119,6 +119,7 @@ void dae::Minigin::RunOneFrame(auto& last_time, float& lag)
 	}
 	SceneManager::GetInstance().Update(delta_time);
 	Renderer::GetInstance().Render();
+	SceneManager::GetInstance().DeleteMarkedObjects();
 
 	int ms_per_frame{ 16 };
 	const auto sleep_time = current_time + std::chrono::milliseconds(ms_per_frame) - std::chrono::high_resolution_clock::now();

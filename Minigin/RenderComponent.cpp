@@ -8,7 +8,7 @@ dae::RenderComponent::RenderComponent(GameObject* owner)
 {
 }
 
-void dae::RenderComponent::Update()
+void dae::RenderComponent::Update(float)
 {
 }
 

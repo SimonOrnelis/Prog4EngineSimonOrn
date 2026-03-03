@@ -8,8 +8,11 @@
 #include "Minigin.h"
 #include "SceneManager.h"
 #include "ResourceManager.h"
+
+// Components
 #include "TextComponent.h"
 #include "RenderComponent.h"
+#include "FPSComponent.h"
 
 #include "Scene.h"
 
@@ -38,11 +41,16 @@ static void load()
 	// Title
 	go = std::make_unique<dae::GameObject>();
 	go->SetPosition(292, 20);
-	go->AddComponent<dae::TextComponent>(go.get())->SetText("Programming 4 Assignment", font, { 255,255,0,255 });
+	go->AddComponent<dae::TextComponent>(go.get())->SetText("Programming 4 Assignment", font, { 255,255,255,255 });
 	scene.Add(std::move(go));
 
 	// FPS Counter
 	auto FPSCounter = std::make_unique<dae::GameObject>();
+	FPSCounter->SetPosition(20, 20);
+	FPSCounter->AddComponent<dae::TextComponent>(FPSCounter.get())->SetText("FPS: ", font, { 255,255,255,255 });
+	FPSCounter->AddComponent<dae::FPSComponent>(FPSCounter.get())->SetTextComponent(FPSCounter->GetComponent<dae::TextComponent>());
+	scene.Add(std::move(FPSCounter));
+	
 
 
 

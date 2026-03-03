@@ -1,9 +1,7 @@
 #include <string>
 #include "GameObject.h"
 #include "ResourceManager.h"
-#include "Renderer.h"
 #include "BaseComponent.h"
-#include "TestTextComponent.h"
 
 dae::GameObject::~GameObject() = default;
 
@@ -11,8 +9,7 @@ void dae::GameObject::Update(float deltaTime){
 	float totalDeltaTime = deltaTime;
 	totalDeltaTime += deltaTime;
 	for (auto& c : m_Components)
-		c->Update();
-
+		c->Update(deltaTime);
 }
 
 void dae::GameObject::Render() const
