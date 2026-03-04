@@ -8,6 +8,7 @@
 #include "Minigin.h"
 #include "SceneManager.h"
 #include "ResourceManager.h"
+#include <imgui.h>
 
 // Components
 #include "TextComponent.h"
@@ -51,7 +52,8 @@ static void load()
 	FPSCounter->AddComponent<dae::FPSComponent>(FPSCounter.get())->SetTextComponent(FPSCounter->GetComponent<dae::TextComponent>());
 	scene.Add(std::move(FPSCounter));
 	
-
+	//const char* label{ 'f' };
+	//ImGui::SmallButton()
 
 
 

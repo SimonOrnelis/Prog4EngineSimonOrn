@@ -30,6 +30,7 @@ add_executable(${TARGET_NAME} ${TARGET_PARAM}
   Minigin/TextComponent.cpp
   Minigin/RenderComponent.cpp
   Minigin/FPSComponent.cpp
+  Minigin/GuiManager.cpp
 )
 
 # enable c++20 features
@@ -116,6 +117,13 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(imgui)
 
+# ImGui_Plot --> graphs
+include(FetchContent)
+FetchContent_Declare(
+    imgui_plot
+    GIT_REPOSITORY https://github.com/soulthreads/imgui-plot.git)
+FetchContent_MakeAvailable(imgui_plot)
+
 add_library(imgui STATIC
   ${imgui_SOURCE_DIR}/imgui.cpp
   ${imgui_SOURCE_DIR}/imgui_draw.cpp
@@ -128,6 +136,9 @@ add_library(imgui STATIC
 
 target_include_directories(imgui PUBLIC ${imgui_SOURCE_DIR} ${sdl3_SOURCE_DIR}/include)
 target_link_libraries(imgui PUBLIC SDL3::SDL3)
+target_include_directories(imgui_plot PUBLIC ${imgui_SOURCE_DIR} ${imgui_plot}/include)
+target_link_libraries(imgui_plot PUBLIC imgui)
+
 # enable c++20 features
 target_compile_features(imgui PUBLIC cxx_std_20)
 
@@ -158,6 +169,7 @@ target_include_directories("${TARGET_NAME}" PUBLIC
   ${sdl3_SOURCE_DIR}/include
   ${sdl3_image_SOURCE_DIR}/include
   ${sdl3_ttf_SOURCE_DIR}/include
+  ${imgui_plot_SOURCE_DIR}/include
   ${imgui_SOURCE_DIR}
   ${VLD_INCLUDE_DIR}
 )
@@ -166,6 +178,7 @@ target_link_libraries("${TARGET_NAME}" PUBLIC
   SDL3::SDL3 
   SDL3_ttf::SDL3_ttf
   imgui
+  imgui_plot
   ${VLD_LIBRARIES}
 )
 

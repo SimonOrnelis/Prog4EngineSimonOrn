@@ -7,10 +7,12 @@
 #include <imgui.h>
 #include <backends/imgui_impl_sdl3.h>
 #include <backends/imgui_impl_sdlrenderer3.h>
+#include "GuiManager.h"
 
 void dae::Renderer::Init(SDL_Window* window)
 {
 	m_window = window;
+	m_pGuiManager = new GuiManager{};
 
 	SDL_SetHint(SDL_HINT_RENDER_VSYNC, "1");
 
@@ -47,7 +49,8 @@ void dae::Renderer::Render() const
 	ImGui_ImplSDL3_NewFrame();
 	ImGui::NewFrame();
 
-	ImGui::ShowDemoWindow(); // For demonstration purposes, do not keep this in your engine
+	m_pGuiManager->Render();
+	//ImGui::ShowDemoWindow(); // For demonstration purposes, do not keep this in your engine
 
 	ImGui::Render();
 
