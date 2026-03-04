@@ -11,3 +11,10 @@ void dae::Transform::SetPosition(const glm::vec3& position)
 { 
 	m_position = position; 
 }
+
+dae::Transform dae::Transform::operator-(const Transform& other) const
+{
+	Transform result;
+	result.SetPosition(m_position - other.m_position);
+	return result;
+}
