@@ -70,8 +70,8 @@ void dae::GameObject::RemoveChild(GameObject* child)
 dae::GameObject::~GameObject() = default;
 
 void dae::GameObject::Update(float deltaTime){
-	float totalDeltaTime = deltaTime;
-	totalDeltaTime += deltaTime;
+	//float totalDeltaTime = deltaTime;
+	//totalDeltaTime += deltaTime;
 	for (auto& c : m_Components)
 		c->Update(deltaTime);
 }

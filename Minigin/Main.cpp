@@ -51,15 +51,6 @@ static void load()
 	FPSCounter->AddComponent<dae::TextComponent>(FPSCounter.get())->SetText("FPS: ", font, { 255,255,255,255 });
 	FPSCounter->AddComponent<dae::FPSComponent>(FPSCounter.get())->SetTextComponent(FPSCounter->GetComponent<dae::TextComponent>());
 	scene.Add(std::move(FPSCounter));
-	
-	//const char* label{ 'f' };
-	//ImGui::SmallButton()
-
-
-
-
-
-	
 }
 
 int main(int, char*[]) {
