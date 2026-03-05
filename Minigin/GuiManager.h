@@ -29,7 +29,7 @@ namespace dae
 		//std::vector<float> m_YsEx1;
 		//std::vector<long long> m_SumResultsEx1;
 
-		bool showEx2{ false };
+		//bool showEx2{ false };
 
 		void CalcResults(GraphInfo& info);
 	};
